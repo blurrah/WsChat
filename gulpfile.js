@@ -3,6 +3,7 @@ var babel = require('gulp-babel');
 var run = require('gulp-run');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
+var livereload = require('gulp-livereload');
 
 gulp.task('transpile-app', function() {
     return gulp.src('app/index.es6.js')
@@ -21,7 +22,8 @@ gulp.task('transpile-xmpp', function() {
 gulp.task('styles', function() {
     return gulp.src('./browser/scss/main.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./browser/css'));
+        .pipe(gulp.dest('./browser/css'))
+        .pipe(livereload());
 });
 
 gulp.task('run', ['default'], function() {
@@ -29,3 +31,9 @@ gulp.task('run', ['default'], function() {
 });
 
 gulp.task('default', ['transpile-app', 'transpile-xmpp', 'styles']);
+
+gulp.task('watch', ['styles'], function() {
+    livereload.listen();
+    gulp.watch('browser/scss/*.scss', ['styles']);
+    gulp.watch('browser/scss/**/*.scss', ['styles']);
+})

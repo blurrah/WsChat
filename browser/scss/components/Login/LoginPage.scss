@@ -1,0 +1,15 @@
+#login {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    .inner {
+        margin: auto;
+        & > h1, & > p, & > input {
+            text-align: center;
+        }
+
+        input {
+            width: 400px;
+        }
+    }
+}

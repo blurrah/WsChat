@@ -13,13 +13,13 @@ class TestComponent extends React.Component {
     render() {
         return (
             <header>
-                <p>Electron versie is {process.versions['electron']}</p>
+                <p className="info">Electron versie is {process.versions['electron']}</p>
                 <LoginPage handleLogin={this.handleLogin} />
             </header>
         );
     }
-    handleLogin(data) {
-        ipc.send('login-start', data);
+    handleLogin(login) {
+        ipc.send('login-start', login);
     }
 };
 
