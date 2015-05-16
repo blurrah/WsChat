@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var babel = require('gulp-babel');
 var run = require('gulp-run');
 var rename = require('gulp-rename');
+var sass = require('gulp-sass');
 
 gulp.task('transpile-app', function() {
     return gulp.src('app/index.es6.js')
@@ -10,8 +11,21 @@ gulp.task('transpile-app', function() {
     .pipe(gulp.dest('app'));
 });
 
+gulp.task('transpile-xmpp', function() {
+    return gulp.src('app/lib/xmpp.es6.js')
+        .pipe(babel())
+        .pipe(rename('xmpp.js'))
+        .pipe(gulp.dest('app/lib'));
+});
+
+gulp.task('styles', function() {
+    return gulp.src('./browser/scss/main.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./browser/css'));
+});
+
 gulp.task('run', ['default'], function() {
     return run('electron app').exec();
 });
 
-gulp.task('default', ['transpile-app']);
+gulp.task('default', ['transpile-app', 'transpile-xmpp', 'styles']);

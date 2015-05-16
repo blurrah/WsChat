@@ -1,19 +1,25 @@
 import React from 'react';
-import LoginPage from './Components/Loginpage';
+import LoginPage from './Components/Login/Loginpage';
 
 class TestComponent extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    componentDidMount() {
+        ipc.send('application-mounted');
+    }
+
     render() {
         return (
             <header>
-                <h1>LeagueChat</h1>
                 <p>Electron versie is {process.versions['electron']}</p>
-                <LoginPage />
+                <LoginPage handleLogin={this.handleLogin} />
             </header>
         );
+    }
+    handleLogin(data) {
+        ipc.send('login-start', data);
     }
 };
 
