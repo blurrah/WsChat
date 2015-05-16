@@ -1,0 +1,22 @@
+{
+  "name": "browser",
+  "version": "0.0.0",
+  "homepage": "https://github.com/blurrah/LeagueChat",
+  "authors": [
+    "blurrah <borisbesemer@gmail.com>"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-libsass": "~1.0.2"
+  }
+}
