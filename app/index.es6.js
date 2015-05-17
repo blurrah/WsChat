@@ -1,8 +1,7 @@
 import app from 'app';
 import ipc from 'ipc';
 import BrowserWindow from 'browser-window';
-import lolChat from 'node-lol-xmpp';
-import Client from 'node-xmpp-client';
+import WebSocket from 'ws';
 
 require('crash-reporter').start();
 
@@ -26,25 +25,17 @@ app.on('ready', () => {
         mainWindow = null;
     });
 
+    let ws = new WebSocket('ws://localhost:5222');
+
+    ws.on('open', function open() {
+        console.log('websocket connection opened');
+    });
+
     ipc.on('application-mounted', function(event) {
         console.log('React module has mounted');
     });
 
-    ipc.on('login-start', function(event, data) {
-
-        let client = new Client({
-            jid: data.login + '@pvp.net/xiff',
-            password: 'AIR_' + data.password,
-            host: 'chat.euw1.lol.riotgames.com',
-            port: 5223
-        });
-        
-        client.on('online', (data) => {
-            console.log('CONNECTED');
-        });
-
-        client.on('stanza', (data) => {
-            console.log('stanza');
-        });
+    ipc.on('login-start', function(event, login) {
+        console.log(`Login is: ${login}`);
     });
 });

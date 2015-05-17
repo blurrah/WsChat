@@ -1,0 +1,26 @@
+#login {
+    height: 300px;
+    width: 100%;
+    display: flex;
+
+    .inner {
+        margin: auto;
+
+        & > h1, & > p, & > input {
+            text-align: center;
+        }
+
+        input {
+            width: 400px;
+            padding: 10px;
+            border: solid 5px #dcdcdc;
+            transition: border 0.3s;
+            outline: none;
+
+            &:focus, &.focus {
+                border: solid 5px #969696;
+                //box-shadow: 0 0 5px 1px #969696;
+            }
+        }
+    }
+}

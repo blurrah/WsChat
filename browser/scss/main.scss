@@ -1,11 +1,22 @@
 // Import variables
 @import "variables";
 
+// Import normalize
+@import "../bower_components/normalize-libsass/normalize";
+
 // Import mixins
 
 // Import components
+@import "components/Login/LoginPage";
 
 
-h1 {
-    color: $boris;
+h1, p, input {
+    font-family: 'Open Sans', sans-serif;
+}
+
+p.info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
 }
