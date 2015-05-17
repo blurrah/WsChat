@@ -367,13 +367,19 @@ th {
     #login .inner > h1, #login .inner > p, #login .inner > input {
       text-align: center; }
     #login .inner input {
-      width: 400px; }
+      width: 400px;
+      padding: 10px;
+      border: solid 5px #dcdcdc;
+      transition: border 0.3s;
+      outline: none; }
+      #login .inner input:focus, #login .inner input.focus {
+        border: solid 5px #969696; }
 
-h1, p {
-  font-family: 'Source Sans Pro', sans-serif; }
+h1, p, input {
+  font-family: 'Open Sans', sans-serif; }
 
 p.info {
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: 0;
   font-size: 10px; }

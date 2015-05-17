@@ -1,6 +1,7 @@
 import app from 'app';
 import ipc from 'ipc';
 import BrowserWindow from 'browser-window';
+import WebSocket from 'ws';
 
 require('crash-reporter').start();
 
@@ -22,6 +23,12 @@ app.on('ready', () => {
 
     mainWindow.on('closed', () => {
         mainWindow = null;
+    });
+
+    let ws = new WebSocket('ws://localhost:5222');
+
+    ws.on('open', function open() {
+        console.log('websocket connection opened');
     });
 
     ipc.on('application-mounted', function(event) {
