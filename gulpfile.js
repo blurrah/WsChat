@@ -12,12 +12,6 @@ gulp.task('transpile-app', function() {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('transpile-xmpp', function() {
-    return gulp.src('app/lib/xmpp.es6.js')
-        .pipe(babel())
-        .pipe(rename('xmpp.js'))
-        .pipe(gulp.dest('app/lib'));
-});
 
 gulp.task('styles', function() {
     return gulp.src('./browser/scss/main.scss')
@@ -30,10 +24,11 @@ gulp.task('run', ['default'], function() {
     return run('electron app').exec();
 });
 
-gulp.task('default', ['transpile-app', 'transpile-xmpp', 'styles']);
+gulp.task('default', ['transpile-app', 'styles']);
 
 gulp.task('watch', ['styles'], function() {
     livereload.listen();
     gulp.watch('browser/scss/*.scss', ['styles']);
     gulp.watch('browser/scss/**/*.scss', ['styles']);
-})
+    gulp.watch('app/index.es6.js', ['transpile-app']);
+});

@@ -27,7 +27,7 @@ app.on('ready', () => {
 
     let ws = new WebSocket('ws://localhost:5222');
 
-    ws.on('open', function open() {
+    ws.on('open', () => {
         console.log('websocket connection opened');
     });
 
