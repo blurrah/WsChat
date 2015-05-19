@@ -1,14 +1,30 @@
 import React from 'react';
+import ChatStore from '../../Store/ChatStore';
+import WebSockets from '../../Utils/Websockets';
 
 const ENTER_KEY_CODE = 13;
+
+function _getStateFromStore() {
+    return ChatStore.getState();
+}
 
 export default class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            login: ''
-        };
+        this.state = _getStateFromStore();
+    }
+
+    componentWillMount() {
+        ChatStore.listen(this.onStoreChange.bind(this));
+    }
+
+    componentWillUnmount() {
+        ChatStore.unlisten(this.onStoreChange.bind(this));
+    }
+
+    onStoreChange() {
+        this.setState(_getStateFromStore);
     }
 
     render() {
@@ -25,6 +41,8 @@ export default class LoginPage extends React.Component {
                             onKeyDown={this._onKeyDown.bind(this)}
                         />
                     </form>
+                    <p className={this.state.status} >Current server status is: {this.state.status}</p>
+                    <a className="button" onClick={this._onRefresh.bind(this)} >Refresh server status</a>
                 </div>
             </section>
         )
@@ -45,5 +63,10 @@ export default class LoginPage extends React.Component {
             }
             this.setState({ login: '' });
         }
+    }
+
+    _onRefresh(event) {
+        event.preventDefault();
+        WebSockets.init();
     }
 }

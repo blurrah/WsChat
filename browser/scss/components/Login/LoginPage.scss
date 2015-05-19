@@ -22,5 +22,26 @@
                 //box-shadow: 0 0 5px 1px #969696;
             }
         }
+
+        p.online {
+            color: green;
+        }
+
+        p.offline {
+            color: red;
+        }
+
+    }
+
+    a.button {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        background-color: #dcdcdc;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
     }
 }

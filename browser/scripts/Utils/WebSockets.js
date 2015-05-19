@@ -20,34 +20,34 @@ WebSocket.prototype.off = function (event, callback) {
 
 let WebSocketsUtil = function() {
     // Factory function
-    this.status = null;
 };
 
 WebSocketsUtil.init = function() {
     let ws = new WebSocket('ws://localhost:5222');
+    this.status = null;
 
-    ws.on('open', function open() {
-        console.log('websockets connection opened');
+    ws.on('open', () => {
+        console.log('connected to websockets');
         this.status = true;
         ChatServerActionCreators.receiveServerStatus({status: this.status});
     });
 
-    ws.on('receive-users', function(data, flags) {
+    ws.on('receive-users', (data, flags) => {
         ChatServerActionCreators.receiveUsers(data);
     });
 
-    ws.on('receive-message', function receive(data, flags) {
+    ws.on('receive-message', (data, flags) => {
         ChatServerActionCreators.receiveMessage(data);
     });
 
     // Catch disconnect
     setTimeout(() => {
-        if (this.status === null) {
+        if (this.status !== true) {
+            console.log('settimeout called with this.status: ' + this.status);
             this.status = false;
-            console.log('did not connect!');
-            ChatServerActionCreators.receiveServerStatus({status: this.status});
+            ChatServerActionCreators.receiveServerStatus({status: false});
         }
-    }, 1000);
+    }, 2000);
 };
 
 export default WebSocketsUtil;

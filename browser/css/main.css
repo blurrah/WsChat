@@ -374,6 +374,20 @@ th {
       outline: none; }
       #login .inner input:focus, #login .inner input.focus {
         border: solid 5px #969696; }
+    #login .inner p.online {
+      color: green; }
+    #login .inner p.offline {
+      color: red; }
+  #login a.button {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #dcdcdc;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    height: 40px; }
 
 h1, p, input {
   font-family: 'Open Sans', sans-serif; }

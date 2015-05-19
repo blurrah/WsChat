@@ -1,11 +1,9 @@
 import alt from '../alt';
-import ChatMessageActionCreators from '../Actions/ChatMessageActionCreators';
 import ChatServerActionCreators from '../Actions/ChatServerActionCreators';
 
 class ChatStore {
     constructor() {
-
-        this.bindAction(ChatMessageActionCreators.receiveServerStatus, this.receiveServerStatus);
+        this.bindAction(ChatServerActionCreators.receiveServerStatus, this.receiveServerStatus);
 
         this.status = null;
 
@@ -15,9 +13,11 @@ class ChatStore {
     }
 
     receiveServerStatus({status}) {
-        alert('HAI');
-        console.log('status %s received', status);
-        if (status) this.status = status;
+        if (status)  {
+            this.status = 'online';
+        } else {
+            this.status = 'offline';
+        }
     }
 
 }
