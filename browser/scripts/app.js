@@ -1,5 +1,9 @@
 import React from 'react';
 import LoginPage from './Components/Login/Loginpage';
+import ChatServerActionCreators from './Actions/ChatServerActionCreators';
+import WebSockets from './Utils/WebSockets';
+
+WebSockets.init();
 
 class TestComponent extends React.Component {
     constructor(props) {

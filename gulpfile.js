@@ -26,7 +26,7 @@ gulp.task('run', ['default'], function() {
 
 gulp.task('default', ['transpile-app', 'styles']);
 
-gulp.task('watch', ['styles'], function() {
+gulp.task('watch', ['styles', 'transpile-app'], function() {
     livereload.listen();
     gulp.watch('browser/scss/*.scss', ['styles']);
     gulp.watch('browser/scss/**/*.scss', ['styles']);
