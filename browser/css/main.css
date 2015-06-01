@@ -389,6 +389,75 @@ th {
     line-height: 40px;
     height: 40px; }
 
+#chatpage {
+  height: 100vh; }
+  #chatpage #sidebar {
+    background-color: #333;
+    height: 100vh;
+    width: 25%;
+    float: left;
+    display: block; }
+    #chatpage #sidebar ul {
+      list-style: none;
+      width: 100%;
+      padding: 0;
+      margin: 0; }
+      #chatpage #sidebar ul li {
+        list-style: none;
+        margin: 0; }
+    #chatpage #sidebar li > a {
+      display: block;
+      width: 100%;
+      height: 52px;
+      background-color: #ededed;
+      line-height: 52px; }
+    #chatpage #sidebar ul > li > a {
+      color: #585858;
+      text-decoration: none; }
+  #chatpage #chat {
+    background-color: #ccc;
+    height: 100vh;
+    float: left;
+    width: 75%;
+    display: block; }
+    #chatpage #chat .message-composer {
+      background-color: #fff;
+      position: absolute;
+      bottom: 0;
+      width: 100%; }
+      #chatpage #chat .message-composer input {
+        width: 50%;
+        padding: 10px;
+        border: solid 5px #dcdcdc;
+        transition: border 0.3s;
+        outline: none; }
+        #chatpage #chat .message-composer input:focus, #chatpage #chat .message-composer input.focus {
+          border: solid 5px #969696; }
+
+.error {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-color: red; }
+  .error p {
+    margin: 0;
+    line-height: 40px;
+    text-align: center; }
+
+.error-enter {
+  transform: translate3d(0px, -40px, 0px);
+  transition: transform 0.4s ease-out; }
+  .error-enter.error-enter-active {
+    transform: translate3d(0px, 0px, 0px); }
+
+.error-leave {
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform 0.4s ease-out; }
+  .error-leave.error-leave-active {
+    transform: translate3d(0px, -40px, 0px); }
+
 h1, p, input {
   font-family: 'Open Sans', sans-serif; }
 

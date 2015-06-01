@@ -3,7 +3,7 @@ import ChatServerActionCreators from '../Actions/ChatServerActionCreators';
 
 class ChatStore {
     constructor() {
-        this.bindAction(ChatServerActionCreators.receiveServerStatus, this.receiveServerStatus);
+        this.bindActions(ChatServerActionCreators);
 
         this.status = null;
 
@@ -12,12 +12,17 @@ class ChatStore {
         this.messages = [];
     }
 
-    receiveServerStatus({status}) {
+    onReceiveServerStatus({status}) {
         if (status)  {
             this.status = 'online';
         } else {
             this.status = 'offline';
         }
+    }
+
+    onReceiveUsers(users) {
+        console.log('store received users');
+        this.users = users;
     }
 
 }

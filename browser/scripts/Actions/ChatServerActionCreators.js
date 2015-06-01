@@ -4,6 +4,10 @@ class ChatServerActionCreators {
     receiveServerStatus(data) {
         this.dispatch(data);
     }
+    
+    receiveUsers(data) {
+        this.dispatch(data);
+    }
 }
 
 export default alt.createActions(ChatServerActionCreators);

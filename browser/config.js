@@ -18,7 +18,6 @@ System.config({
     "babel": "npm:babel-core@5.2.17",
     "babel-runtime": "npm:babel-runtime@5.2.17",
     "core-js": "npm:core-js@0.9.7",
-    "johnalbin/normalize-scss": "github:johnalbin/normalize-scss@2.1.3",
     "react": "npm:react@0.13.3",
     "ws": "npm:ws@0.7.2",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -80,9 +79,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:asn1.js@1.0.5": {
+    "npm:asn1.js@1.0.6": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "bn.js": "npm:bn.js@1.3.0",
+      "bn.js": "npm:bn.js@2.0.5",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "inherits": "npm:inherits@2.0.1",
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
@@ -252,7 +251,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:parse-asn1@3.0.0": {
-      "asn1.js": "npm:asn1.js@1.0.5",
+      "asn1.js": "npm:asn1.js@1.0.6",
       "browserify-aes": "npm:browserify-aes@1.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.1",

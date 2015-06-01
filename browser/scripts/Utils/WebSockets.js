@@ -13,17 +13,22 @@ WebSocket.prototype.once = function (event, callback) {
   };
 };
 
-
 WebSocket.prototype.off = function (event, callback) {
   this['on'+event] = callback;
 };
 
-let WebSocketsUtil = function() {
-    // Factory function
+WebSocket.prototype.send = function(event, callback) {
+    this['send'] = callback;
 };
 
-WebSocketsUtil.init = function() {
-    let ws = new WebSocket('ws://localhost:5222');
+let ws;
+
+let WebSocketsUtil = function() {
+    // Factory function
+    ws = new WebSocket('ws://localhost:5222');
+};
+
+WebSocketsUtil.prototype.init = function() {
     this.status = null;
 
     ws.on('open', () => {
@@ -50,4 +55,9 @@ WebSocketsUtil.init = function() {
     }, 2000);
 };
 
-export default WebSocketsUtil;
+WebSocketsUtil.prototype.sendPresence = function(presence) {
+    console.log('send presence called');
+    ws.send('presence', presence);
+}
+
+export default new WebSocketsUtil();
