@@ -2,6 +2,7 @@ import React from 'react';
 import LoginPage from './Components/Login/LoginPage';
 import ChatPage from './Components/Chat/ChatPage';
 import ChatServerActionCreators from './Actions/ChatServerActionCreators';
+import ChatMessageActionCreators from './Actions/ChatMessageActionCreators';
 import ws from './Utils/SimpleWebSocket';
 //import WebSockets from './Utils/WebSockets';
 
@@ -25,10 +26,11 @@ function _checkServerStatus() {
 }
 
 ws.on('message', (event) => {
-    ChatServerActionCreators.receiveUsers(event.data);
-    console.log(event);
+    let result = JSON.parse(event.data);
+    if(result.type === 'presence') {
+        ChatServerActionCreators.receiveUsers(result);
+    }
 });
-
 
 
 _checkServerStatus();
@@ -57,7 +59,8 @@ class Application extends React.Component {
     }
 
     _handleLogin(login) {
-        ipc.send('login-start', login);
+        ChatMessageActionCreators.getUsername(login);
+
         ws.send(JSON.stringify({type: 'presence', message: login}), (error) => {
             console.log(error);
         });

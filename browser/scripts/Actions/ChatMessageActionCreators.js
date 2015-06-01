@@ -2,7 +2,7 @@ import alt from '../alt';
 
 class ChatMessageActionCreators {
     constructor() {
-        this.generateActions('sendStatus', 'sendMessage');
+        this.generateActions('getUsername', 'sendStatus', 'sendMessage');
     }
 }
 

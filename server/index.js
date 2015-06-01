@@ -5,6 +5,7 @@ var users = [];
 
 wss.on('connection', function connection(ws) {
     console.log('client connected');
+    var user;
 
     ws.on('message', function incoming(data) {
         var result = JSON.parse(data);
@@ -12,12 +13,17 @@ wss.on('connection', function connection(ws) {
             case 'presence':
                 console.log('presence type!');
                 users.push(result.message);
-                ws.send(JSON.stringify(users));
+                var user = result.message;
+                ws.send(JSON.stringify({type: 'presence', username: users}));
             break;
             case 'getUsers':
                 ws.send(JSON.stringify(users));
             break;
         };
+    });
+
+    ws.on('close', function close(data) {
+        users.splice(users.indexOf(user), 1);
     });
 
 });

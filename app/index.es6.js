@@ -17,6 +17,7 @@ app.on('ready', () => {
         width: 800,
         height: 600
     });
+    mainWindow.openDevTools();
 
     mainWindow.loadUrl('file://' + __dirname + '/../browser/index.html');
 

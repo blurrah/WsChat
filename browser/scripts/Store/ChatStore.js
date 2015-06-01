@@ -1,11 +1,14 @@
 import alt from '../alt';
 import ChatServerActionCreators from '../Actions/ChatServerActionCreators';
+import ChatMessageActionCreators from '../Actions/ChatMessageActionCreators';
 
 class ChatStore {
     constructor() {
         this.bindActions(ChatServerActionCreators);
+        this.bindActions(ChatMessageActionCreators);
 
         this.status = null;
+        this.currentUser = null;
 
         this.users = [];
 
@@ -20,9 +23,13 @@ class ChatStore {
         }
     }
 
-    onReceiveUsers(users) {
+    onReceiveUsers(data) {
         console.log('store received users');
-        this.users = users;
+        this.users = data.username;
+    }
+
+    onGetUsername(username) {
+        this.currentUser = username;
     }
 
 }
