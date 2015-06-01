@@ -11,13 +11,8 @@
         var ipc = require('ipc');
         System.babelOptions = {blacklist: []}; // Stop es6-module-loader from blacklisting react
         System.import('./scripts/app');
-
-        ipc.on('server-status', function(data) {
-            console.log('server status komt terug enzo..');
-            console.dir(data);
-        });
     </script>
-    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="http://localhost:35729/livereload.js"></script> // manually adding in livereload for development
 </head>
 <body>
 </body>
