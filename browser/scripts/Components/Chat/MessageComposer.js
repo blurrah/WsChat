@@ -8,10 +8,16 @@ export default class MessageComposer extends React.Component {
     render() {
         return (
             <div className="message-composer">
-                <form action="" id="composer">
-                    <input name="input" id=""></input>
-                </form>
+                    <input onKeyDown={this._onChange.bind(this)} ref="input" name="input" id=""></input>
             </div>
         );
+    }
+
+    _onChange(event) {
+        if(event.keyCode === 13) {
+            var result = React.findDOMNode(this.refs.input).value;
+            this.props.handleSendMessage(result);
+            React.findDOMNode(this.refs.input).value = '';
+        }
     }
 }

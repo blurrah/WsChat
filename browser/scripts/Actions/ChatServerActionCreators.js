@@ -1,12 +1,8 @@
 import alt from '../alt';
 
 class ChatServerActionCreators {
-    receiveServerStatus(data) {
-        this.dispatch(data);
-    }
-    
-    receiveUsers(data) {
-        this.dispatch(data);
+    constructor() {
+        this.generateActions('receiveServerStatus', 'receiveUsers', 'receiveMessages');
     }
 }
 

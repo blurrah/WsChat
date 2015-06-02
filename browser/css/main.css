@@ -405,34 +405,52 @@ th {
       #chatpage #sidebar ul li {
         list-style: none;
         margin: 0; }
-    #chatpage #sidebar li > a {
+    #chatpage #sidebar li {
       display: block;
       width: 100%;
       height: 52px;
       background-color: #ededed;
       line-height: 52px; }
-    #chatpage #sidebar ul > li > a {
-      color: #585858;
-      text-decoration: none; }
+      #chatpage #sidebar li a {
+        color: #585858;
+        text-decoration: none;
+        padding: 20px; }
   #chatpage #chat {
-    background-color: #ccc;
-    height: 100vh;
+    height: 90vh;
+    max-height: 90vh;
     float: left;
     width: 75%;
-    display: block; }
-    #chatpage #chat .message-composer {
-      background-color: #fff;
-      position: absolute;
-      bottom: 0;
-      width: 100%; }
-      #chatpage #chat .message-composer input {
-        width: 50%;
-        padding: 10px;
-        border: solid 5px #dcdcdc;
-        transition: border 0.3s;
-        outline: none; }
-        #chatpage #chat .message-composer input:focus, #chatpage #chat .message-composer input.focus {
-          border: solid 5px #969696; }
+    display: block;
+    overflow-y: scroll; }
+    #chatpage #chat .chat-row {
+      width: 100%;
+      height: 105px;
+      padding-top: 10px;
+      padding-bottom: 10px; }
+      #chatpage #chat .chat-row .chat-item {
+        width: 45%;
+        float: left;
+        border: 1px solid #eaebf3;
+        padding-left: 10px;
+        margin-left: 10px; }
+        #chatpage #chat .chat-row .chat-item.self {
+          float: right;
+          background-color: #eaebf3;
+          margin-right: 10px; }
+  #chatpage .message-composer {
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    height: 10vh;
+    width: 75%; }
+    #chatpage .message-composer input {
+      width: 50%;
+      padding: 10px;
+      border: solid 5px #dcdcdc;
+      transition: border 0.3s;
+      outline: none; }
+      #chatpage .message-composer input:focus, #chatpage .message-composer input.focus {
+        border: solid 5px #969696; }
 
 .error {
   position: absolute;
@@ -458,7 +476,7 @@ th {
   .error-leave.error-leave-active {
     transform: translate3d(0px, -40px, 0px); }
 
-h1, p, input {
+h1, p, a, h3, input {
   font-family: 'Open Sans', sans-serif; }
 
 p.info {

@@ -29,6 +29,9 @@ ws.on('message', (event) => {
     let result = JSON.parse(event.data);
     if(result.type === 'presence') {
         ChatServerActionCreators.receiveUsers(result);
+    } else if (result.type === 'message') {
+        console.log(result);
+        ChatServerActionCreators.receiveMessages(result);
     }
 });
 
@@ -67,7 +70,14 @@ class Application extends React.Component {
 
         // Electron does not use URL's so can't use a proper router
         this.setState({
-            currentPage: <ChatPage />
+            currentPage: <ChatPage handleSendMessage={this._handleSendMessage.bind(this)} />
+        });
+    }
+
+    _handleSendMessage(data) {
+        console.log('handleSendMessage called on app.js');
+        ws.send(JSON.stringify({type: 'message', message: data}), (error) => {
+            console.log(error);
         });
     }
 
