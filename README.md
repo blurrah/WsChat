@@ -1,2 +1,2 @@
-# LeagueChat
-League of Legends chat application made with Electron
+# WsChat
+WebSockets chat application made with Electron
