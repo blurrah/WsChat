@@ -1,14 +1,14 @@
 {
-  "name": "LeagueChat",
+  "name": "WsChat",
   "version": "0.1.0",
-  "description": "Lightweight League of Legends chat application",
+  "description": "Websockets Chat application with Electron and React",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blurrah/LeagueChat.git"
+    "url": "https://github.com/blurrah/WsChat.git"
   },
   "keywords": [
     "League",
@@ -21,9 +21,9 @@
   "author": "Boris Besemer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/blurrah/LeagueChat/issues"
+    "url": "https://github.com/blurrah/WsChat/issues"
   },
-  "homepage": "https://github.com/blurrah/LeagueChat",
+  "homepage": "https://github.com/blurrah/WsChat",
   "devDependencies": {
     "electron-prebuilt": "^0.25.3-2",
     "gulp": "^3.8.11",

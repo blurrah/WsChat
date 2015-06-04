@@ -1,7 +1,7 @@
 {
-  "name": "browser",
-  "version": "0.0.0",
-  "homepage": "https://github.com/blurrah/LeagueChat",
+  "name": "WsChat",
+  "version": "0.1.0",
+  "homepage": "https://github.com/blurrah/WsChat",
   "authors": [
     "blurrah <borisbesemer@gmail.com>"
   ],

@@ -35,7 +35,7 @@ export default class LoginPage extends React.Component {
                     <ReactCSSTransitionGroup transitionName="error">
                         {this.state.showErrorMsg ? <Error errorMsg={this.state.errorMsg} /> : null }
                     </ReactCSSTransitionGroup>
-                    <h1>LeagueChat</h1>
+                    <h1>WsChat</h1>
                     <p>Pick a username and login to the chat.</p>
                     <form>
                         <input type="text" name="login" placeholder="Login..."
