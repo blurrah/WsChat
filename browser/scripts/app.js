@@ -4,22 +4,21 @@ import ChatPage from './Components/Chat/ChatPage';
 import ChatServerActionCreators from './Actions/ChatServerActionCreators';
 import ChatMessageActionCreators from './Actions/ChatMessageActionCreators';
 import ws from './Utils/SimpleWebSocket';
-//import WebSockets from './Utils/WebSockets';
 
 function _checkServerStatus() {
     this.status = null;
 
     ws.on('open', () => {
-        console.log('connected to websockets');
         this.status = true;
+
         ChatServerActionCreators.receiveServerStatus({status: this.status});
     });
 
     // Catch disconnect
     setTimeout(() => {
-        console.log('settimeout called met status: ' + this.status);
         if (this.status === null || this.status === false) {
             this.status = false;
+
             ChatServerActionCreators.receiveServerStatus({status: false});
         }
     }, 2000);
@@ -27,10 +26,10 @@ function _checkServerStatus() {
 
 ws.on('message', (event) => {
     let result = JSON.parse(event.data);
+
     if(result.type === 'presence') {
         ChatServerActionCreators.receiveUsers(result);
     } else if (result.type === 'message') {
-        console.log(result);
         ChatServerActionCreators.receiveMessages(result);
     }
 });
@@ -41,6 +40,7 @@ _checkServerStatus();
 class Application extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {};
     }
 
@@ -75,7 +75,6 @@ class Application extends React.Component {
     }
 
     _handleSendMessage(data) {
-        console.log('handleSendMessage called on app.js');
         ws.send(JSON.stringify({type: 'message', message: data}), (error) => {
             console.log(error);
         });
@@ -84,7 +83,6 @@ class Application extends React.Component {
     _handleRefreshStatus() {
         _checkServerStatus();
     }
-
 };
 
 React.render(<Application />, document.body);

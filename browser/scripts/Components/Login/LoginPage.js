@@ -1,5 +1,4 @@
 import React from 'react/addons';
-
 import ChatStore from '../../Store/ChatStore';
 import Error from '../Reusables/Error';
 
@@ -51,7 +50,6 @@ export default class LoginPage extends React.Component {
         )
     }
 
-
     _onKeyDown(event) {
         if (event.keyCode === ENTER_KEY_CODE) {
             let login = React.findDOMNode(this.refs.login).value.trim();
@@ -77,8 +75,7 @@ export default class LoginPage extends React.Component {
         }
     }
 
-    _onRefresh(event) {
-        event.preventDefault();
+    _onRefresh() {
         this.props.onRefresh();
     }
 }

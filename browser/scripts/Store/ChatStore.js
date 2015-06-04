@@ -7,11 +7,10 @@ class ChatStore {
         this.bindActions(ChatServerActionCreators);
         this.bindActions(ChatMessageActionCreators);
 
+        // Set up state stores
         this.status = null;
         this.currentUser = null;
-
         this.users = [];
-
         this.messages = [];
     }
 
@@ -24,20 +23,16 @@ class ChatStore {
     }
 
     onReceiveUsers({username}) {
-        console.log('store received users');
         this.users = username;
     }
 
     onReceiveMessages({messages}) {
-        console.log('onReceiveMessages called with: ' + messages);
         this.messages = messages;
     }
 
     onGetUsername(username) {
         this.currentUser = username;
     }
-
-
 }
 
 export default alt.createStore(ChatStore, 'ChatStore');

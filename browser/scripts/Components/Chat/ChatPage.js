@@ -12,6 +12,7 @@ function _getStateFromStore() {
 export default class ChatPage extends React.Component {
     constructor(props) {
         super(props);
+        
         this.state = _getStateFromStore();
     }
 
@@ -33,12 +34,13 @@ export default class ChatPage extends React.Component {
 
     componentDidUpdate() {
         let node = React.findDOMNode(this.refs.chatscreen);
+
         node.scrollTop = node.scrollHeight;
-        console.log(this.state);
     }
 
     render() {
         let messages;
+
         if(this.state.messages === undefined) {
             messages = <div className="chat-row"><div className="chat-item" key="Server"><h3>Server</h3> <p>Er zijn nog geen berichten.</p></div></div>;
         } else {
@@ -49,7 +51,6 @@ export default class ChatPage extends React.Component {
                 return <div className="chat-row"><div className="chat-item" key={item.user}> <p>{item.message}</p></div><h3>{item.user}</h3></div>;
             });
         }
-
 
         return (
             <section id="chatpage">
@@ -69,6 +70,7 @@ export default class ChatPage extends React.Component {
             user: this.state.currentUser,
             message: data
         };
+
         this.props.handleSendMessage(result);
     }
 }
