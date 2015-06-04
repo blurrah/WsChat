@@ -18,6 +18,7 @@ System.config({
     "babel": "npm:babel-core@5.2.17",
     "babel-runtime": "npm:babel-runtime@5.2.17",
     "core-js": "npm:core-js@0.9.7",
+    "johnalbin/normalize-scss": "github:johnalbin/normalize-scss@2.1.3",
     "react": "npm:react@0.13.3",
     "ws": "npm:ws@0.7.2",
     "github:jspm/nodelibs-assert@0.1.0": {

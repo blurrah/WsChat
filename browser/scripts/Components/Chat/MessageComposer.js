@@ -8,7 +8,7 @@ export default class MessageComposer extends React.Component {
     render() {
         return (
             <div className="message-composer">
-                    <input onKeyDown={this._onChange.bind(this)} ref="input" name="input" id=""></input>
+                    <input onKeyDown={this._onChange.bind(this)} ref="input" name="input" placeholder="Chat message..."></input>
             </div>
         );
     }

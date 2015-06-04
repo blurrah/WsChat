@@ -17,4 +17,4 @@ WebSocket.prototype.off = function (event, callback) {
 };
 
 
-export default new WebSocket('ws://localhost:5222');
+export default new WebSocket('ws://node.borisbesemer.com:5222');

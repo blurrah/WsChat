@@ -3,3 +3,8 @@ jspm_packages/
 node_modules/
 bower_components/
 app/index.js
+
+*.pyc
+*.app
+*.zip
+*.tar.gz

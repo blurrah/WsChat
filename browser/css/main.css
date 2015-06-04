@@ -369,11 +369,13 @@ th {
     #login .inner input {
       width: 400px;
       padding: 10px;
-      border: solid 5px #dcdcdc;
+      border: solid 5px #eaebf3;
       transition: border 0.3s;
       outline: none; }
+      #login .inner input ::-webkit-input-placeholder {
+        color: #eaebf3; }
       #login .inner input:focus, #login .inner input.focus {
-        border: solid 5px #969696; }
+        border: solid 5px #24bca0; }
     #login .inner p.online {
       color: green; }
     #login .inner p.offline {
@@ -382,17 +384,18 @@ th {
     display: block;
     width: 100%;
     margin: 0 auto;
-    background-color: #dcdcdc;
+    background-color: #2a303f;
     border-radius: 5px;
     font-size: 14px;
     text-align: center;
     line-height: 40px;
-    height: 40px; }
+    height: 40px;
+    color: #fff; }
 
 #chatpage {
   height: 100vh; }
   #chatpage #sidebar {
-    background-color: #333;
+    background-color: #2a303f;
     height: 100vh;
     width: 25%;
     float: left;
@@ -424,33 +427,72 @@ th {
     overflow-y: scroll; }
     #chatpage #chat .chat-row {
       width: 100%;
-      height: 105px;
-      padding-top: 10px;
-      padding-bottom: 10px; }
+      height: auto;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      position: relative;
+      overflow: hidden; }
       #chatpage #chat .chat-row .chat-item {
+        position: relative;
         width: 45%;
         float: left;
         border: 1px solid #eaebf3;
         padding-left: 10px;
-        margin-left: 10px; }
+        margin-left: 10px;
+        border-radius: 5px; }
+        #chatpage #chat .chat-row .chat-item p {
+          word-wrap: break-word; }
         #chatpage #chat .chat-row .chat-item.self {
           float: right;
           background-color: #eaebf3;
           margin-right: 10px; }
+      #chatpage #chat .chat-row h3 {
+        clear: both;
+        font-size: 12px;
+        font-weight: normal;
+        text-align: left;
+        position: relative;
+        left: 20px;
+        top: 5px; }
+        #chatpage #chat .chat-row h3.self {
+          text-align: right;
+          left: auto;
+          right: 20px;
+          font-weight: 600; }
   #chatpage .message-composer {
-    background-color: #fff;
+    box-sizing: border-box;
+    background-color: #eaebf3;
     position: absolute;
     bottom: 0;
     height: 10vh;
-    width: 75%; }
+    width: 100%;
+    padding-left: 20px; }
     #chatpage .message-composer input {
-      width: 50%;
-      padding: 10px;
-      border: solid 5px #dcdcdc;
+      width: 90%;
+      padding-top: 20px;
+      border: none;
+      border-bottom: solid 1px #dcdcdc;
       transition: border 0.3s;
-      outline: none; }
+      outline: none;
+      background-color: #eaebf3; }
       #chatpage .message-composer input:focus, #chatpage .message-composer input.focus {
-        border: solid 5px #969696; }
+        border-bottom: solid 1px #969696; }
+
+.message-enter {
+  transform: translate3d(0px, -40px, 0px);
+  opacity: 0.2;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out; }
+  .message-enter.message-enter-active {
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px); }
+
+.message-leave {
+  transform: translate3d(0px, 0px, 0px);
+  opacity: 1;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out; }
+  .message-leave.message-leave-active {
+    opacity: 0.2;
+    transform: translate3d(0px, -40px, 0px); }
 
 .error {
   position: absolute;
@@ -476,8 +518,11 @@ th {
   .error-leave.error-leave-active {
     transform: translate3d(0px, -40px, 0px); }
 
+*, *:before, *:after {
+  box-sizing: border-box; }
+
 h1, p, a, h3, input {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Avenir Next', sans-serif; }
 
 p.info {
   position: absolute;

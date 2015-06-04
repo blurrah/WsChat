@@ -13,12 +13,17 @@
         input {
             width: 400px;
             padding: 10px;
-            border: solid 5px #dcdcdc;
+            border: solid 5px $lightblue;
             transition: border 0.3s;
             outline: none;
 
+            ::-webkit-input-placeholder {
+                color: $lightblue;
+            }
+
+
             &:focus, &.focus {
-                border: solid 5px #969696;
+                border: solid 5px $greenish;
                 //box-shadow: 0 0 5px 1px #969696;
             }
         }
@@ -37,11 +42,12 @@
         display: block;
         width: 100%;
         margin: 0 auto;
-        background-color: #dcdcdc;
+        background-color: $darkgrey;
         border-radius: 5px;
         font-size: 14px;
         text-align: center;
         line-height: 40px;
         height: 40px;
+        color: #fff;
     }
 }

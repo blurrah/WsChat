@@ -1,8 +1,8 @@
-// Import variables
-@import "variables";
-
 // Import normalize
 @import "../bower_components/normalize-libsass/normalize";
+
+// Import variables
+@import "variables";
 
 // Import mixins
 
@@ -11,9 +11,12 @@
 @import "components/Chat/ChatPage";
 @import "components/Reusables/Error";
 
+*, *:before, *:after {
+    box-sizing: border-box;
+}
 
 h1, p, a, h3, input {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Avenir Next', sans-serif;
 }
 
 p.info {

@@ -3,6 +3,8 @@ import Sidebar from './Sidebar';
 import ChatStore from '../../Store/ChatStore';
 import MessageComposer from './MessageComposer';
 
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 function _getStateFromStore() {
     return ChatStore.getState();
 };
@@ -37,15 +39,14 @@ export default class ChatPage extends React.Component {
 
     render() {
         let messages;
-        console.log(this.state.messages);
         if(this.state.messages === undefined) {
-            messages = <div className="chat-row"><div className="chat-item"><h3>Server</h3> <p>Er zijn nog geen berichten.</p></div></div>;
+            messages = <div className="chat-row"><div className="chat-item" key="Server"><h3>Server</h3> <p>Er zijn nog geen berichten.</p></div></div>;
         } else {
             messages = this.state.messages.map((item) => {
                 if(item.user === this.state.currentUser) {
-                    return <div className="chat-row"><div key={item.user} className="chat-item self"><h3>{item.user}</h3> <p>{item.message}</p></div></div>;
+                    return <div className="chat-row"><div key={item.user} className="chat-item self"><p>{item.message}</p></div><h3 className="self">{item.user}</h3></div>;
                 }
-                return <div className="chat-row"><div className="chat-item" key={item.user}><h3>{item.user}</h3> <p>{item.message}</p></div></div>;
+                return <div className="chat-row"><div className="chat-item" key={item.user}> <p>{item.message}</p></div><h3>{item.user}</h3></div>;
             });
         }
 
@@ -54,7 +55,9 @@ export default class ChatPage extends React.Component {
             <section id="chatpage">
                 <Sidebar users={this.state.users} />
                 <section id="chat" ref="chatscreen">
-                    {messages}
+                    <ReactCSSTransitionGroup transitionName="message">
+                        {messages}
+                    </ReactCSSTransitionGroup>
                 </section>
                 <MessageComposer handleSendMessage={this._handleSendMessage.bind(this)} />
             </section>
@@ -62,7 +65,6 @@ export default class ChatPage extends React.Component {
     }
 
     _handleSendMessage(data) {
-
         var result = {
             user: this.state.currentUser,
             message: data
